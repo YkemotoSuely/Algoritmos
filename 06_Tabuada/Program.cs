@@ -17,6 +17,7 @@ namespace _06_Tabuada
                 while (multiplicando <= 10)
                 {
                     resultado = multiplicador * multiplicando;
+                    //interpolação de string $
                     Console.WriteLine($"{multiplicador} X {multiplicando} = {resultado}");
                     multiplicando++;
                 }
