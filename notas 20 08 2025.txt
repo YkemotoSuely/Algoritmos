@@ -1,0 +1,45 @@
+20/08/2025
+
+ARQUITETURA
+
+model -> Clientes.cs | contém as informações que enviarei para o banco de dados
+
+repository -> ClienteRepository.cs | receberá as informações do model, enviará para o banco de dados 
+que permitam manipular as informações, mas para isso criaremos um arquivo de configuração do meu sistema para
+posteriormente permitir a conexão 
+
+
+Conexão com banco de dados
+
+no menu lateral esquerdo na pasta SistemaAtendimento, clicar com o botão direito do mouse
+
+App.config (é um arquivo XML)
+
+connectionString = "Data Source = MAR0625664W10-1;Initial Catalog=SistemaAtendimento;User ID=sa;Password=senac2025;TrustServerCertificate=True;Integrated Security=false"
+sendo o comando acima o caminho para o aplicativo conectar com o aplicativo SQL Server
+ cada projeto tem que ter sua dependencia 
+
+O arquivo de Conexão é criado uma vez apenas e a cada repositório criado podemos chamar o mesmo arquivo, deixando o software MAIS DINÂ
+
+Nosso objeto Conexão terá um método estático 
+
+ConexaoDB = new ConexaoDB(); //criando a estancia//
+con = Conexao.GetConexao()
+con.open();
+
+toda vez que o metodo Conexão for acionado, o sistema verificará se o objeto está estático na memória
+
+qdo a classe for estática, seus objetos serão estáticos tbm
+
+
+No formulário inserir um novo botão(Caixa de ferramenta
+
+
+clicar duas vexes no botão abrirá a janela para programá-lo
+
+usar as funções TRy
+
+ e CATH
+
+
+Todo código da aula de hoje está disponível no TEAMS, basta apenas baixa-lo e substituir o numero da maquina MAR....

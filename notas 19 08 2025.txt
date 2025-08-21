@@ -1,0 +1,24 @@
+19/08/2025 - Sistema de Atendimento
+
+- arquivos no Diretório C: checagem das pastas do sistema
+
+- banco de dados: No SQLServer confirmamos se o banco de dados e tabelas estão 
+
+-estrutura de pasta
+
+-arquivo conexão
+
+Models:Cliente.cs(A classe que representa os dados)
+Views: FormCadastroCliente.cs (a interface do usuário)
+Controllers: CadastroClienteController.cs(a lógica do aplicativo)
+Repositories: ClienteRepository.cs ( a camada de acesso a dados)
+
+construidas as pastas dentro do visual studio, vamos dar commit dentro do ambiente Visual Studio na
+caixa de opções no alto da página, clicar na opção "GIT" - abrirá janela com a opção "configurar GIT" ->
+clicar -> abrirá janela para complilação do arquivo no Visual Studio no GITHub -> preencher as informações sobre o local
+de salvamento, nome do arquivo e a conta do git que será salvo o repositório.
+
+Criando as Classes
+
+Classe: Clientes
+No Visual Studio, na barra lateral
