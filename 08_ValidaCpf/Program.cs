@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text.RegularExpressions;
-/*
+
 class Program
 {
     static void Main(string[] args)
@@ -63,11 +64,13 @@ class Program
         {
             Console.WriteLine("\n❌ CPF inválido! Dígitos verificadores não conferem.");
         }
+
     }
-}*/
+    
+}
 
 
-
+/*
 class Program
 {
     static void Main(string[] args)
@@ -135,5 +138,5 @@ class Program
             Console.WriteLine("\n❌ CPF inválido! Dígitos verificadores não conferem.");
         }
     }
-}
-
+}*/
+/*

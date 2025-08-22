@@ -1,0 +1,137 @@
+aula 21/08/2025
+
+Array = Vetor
+*declarado entre colchetes []
+
+vamos supor que peço ao meu ususário para digitar seu cpf, sabemos que no c# esse informação terá entrada como uma string, como transformar essa informação em um array?
+Copilot said:
+Copilot
+Ótimo exemplo, Suely! Se você pedir ao usuário para digitar o CPF como uma string, e quiser transformar essa informação em um array de caracteres (por exemplo, para validar ou manipular dígitos individualmente), você pode usar o método ToCharArray().
+
+✅ Exemplo em C#:
+
+
+string cpf = "12345678900"; // entrada do usuário
+char[] cpfArray = cpf.ToCharArray();
+
+// Exibindo os caracteres
+foreach (char c in cpfArray)
+{
+    Console.WriteLine(c);
+}
+
+
+🔍 Resultado:
+Esse código transforma "12345678900" em um vetor de caracteres:
+
+['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '0']
+
+
+🛡️ Dica extra: Validar se o CPF tem 11 dígitos numéricos
+Você pode adicionar uma verificação simples:
+
+
+if (cpf.Length == 11 && cpf.All(char.IsDigit))
+{
+    char[] cpfArray = cpf.ToCharArray();
+    // prosseguir com a lógica
+}
+else
+{
+    Console.WriteLine("CPF inválido. Digite apenas 11 números.");
+}
+
+
+Como funciona o cálculo dos dígitos verificadores:
+🔹 1º dígito verificador (10º dígito):
+Pegue os 9 primeiros dígitos.
+Multiplique cada um por um peso que começa em 10 e vai até 2.
+Some os resultados.
+Divida a soma por 11.
+Se o resto for menor que 2, o dígito é 0.
+Caso contrário, o dígito é 11 - resto.
+🔹 2º dígito verificador (11º dígito):
+Pegue os 9 primeiros dígitos + o 1º dígito verificador.
+Multiplique por pesos de 11 até 2.
+Repita o mesmo processo de soma, divisão e verificação.
+🧮 Exemplo com o CPF: 12345678909
+1º dígito:
+1×10 + 2×9 + 3×8 + 4×7 + 5×6 + 6×5 + 7×4 + 8×3 + 9×2 = 210
+210 % 11 = 1 → 1º dígito = 0 (porque 1 < 2)
+2º dígito:
+1×11 + 2×10 + 3×9 + 4×8 + 5×7 + 6×6 + 7×5 + 8×4 + 9×3 + 0×2 = 255
+255 % 11 = 2 → 2º dígito = 9 (porque 11 - 2 = 9)
+Resultado: CPF válido: 12345678909 
+
+using System;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+Código:
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Digite seu CPF: ");
+        string entrada = Console.ReadLine(); // recebe o CPF com ou sem máscara
+
+        // Remove qualquer caractere que não seja número
+        string cpf = Regex.Replace(entrada, "[^0-9]", "");
+
+        if (ValidarCPF(cpf))
+        {
+            Console.WriteLine("CPF válido!");
+            // Aqui você pode continuar com o processamento do CPF
+        }
+        else
+        {
+            Console.WriteLine("CPF inválido. Certifique-se de digitar 11 números.");
+        }
+    }
+
+    static bool ValidarCPF(string cpf)
+    {
+        return cpf.Length == 11 && cpf.All(char.IsDigit);
+    }
+}
+
+Explicação linha por linha:
+1. Importação de bibliotecas
+
+using System;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+
+System: permite usar funções básicas como Console.WriteLine e Console.ReadLine.
+System.Linq: permite usar funções como All() para verificar se todos os caracteres são dígitos.
+System.Text.RegularExpressions: permite usar expressões regulares para limpar o CPF.
+
+
+2. Função principal
+
+static void Main(string[] args)
+
+
+Ponto de entrada do programa. Tudo começa a ser executado aqui.
+
+3. Entrada do usuário
+
+Console.WriteLine("Digite seu CPF: ");
+string entrada = Console.ReadLine();
+
+Exibe uma mensagem pedindo o CPF.
+Console.ReadLine() captura o que o usuário digitar (com ou sem máscara).
+4. Limpeza da máscara
+
+Remove tudo que não for número (pontos, hífen, espaços, etc.).
+Exemplo: "123.456.789-09" vira "12345678909".
+5. Validação básica
+
+Chama a função ValidarCPF para verificar se o CPF tem 11 dígitos numéricos.
+6. Função de validação
+
+Verifica se o CPF tem exatamente 11 caracteres.
+Verifica se todos os caracteres são dígitos.
+✅ Resultado:
+Esse código garante que o CPF digitado está no formato correto (11 números), mesmo que o usuário digite com máscara.
