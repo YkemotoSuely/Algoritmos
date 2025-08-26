@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using System.Security.Cryptography.X509Certificates;
 
 
 namespace _09_Calendario
@@ -53,24 +56,87 @@ namespace _09_Calendario
             Console.WriteLine("Dom\tSeg\tTer\tQua\tQui\tSex\tSab");
 
             // Imprime os dias do mês
+            //int[] diasFeriados = { };
 
+            int[] diasFeriados = RetornaFeriados(mes, ano);
+            //impressão do calendario
 
             for (int semana = 0; semana < 6; semana++)
             {
                 for (int diaSemana = 0; diaSemana < 7; diaSemana++)
                 {
-                    if (calendario[semana, diaSemana] == 0)
+                    if (calendario[semana, diaSemana] != 0)
                     {
-                        Console.Write("    ");
+                        if (diasFeriados.Contains(calendario[semana, diaSemana]) || diaSemana == 0)
+                            Console.ForegroundColor = ConsoleColor.Red;
+
+                        Console.Write(calendario[semana, diaSemana].ToString("D2") + "\t");
+
+                        Console.ResetColor();
+
                     }
                     else
                     {
-                        Console.Write(calendario[semana, diaSemana].ToString("D2") + "\t");
+                        Console.Write("\t");
                     }
                 }
                 Console.WriteLine();
             }
 
+            Console.Write("\nFeriados: ");
+            for (int i = 0; i < diasFeriados.Length; i++)
+            {
+                if (diasFeriados[i] > 0)
+
+                {
+                    Console.Write($"{diasFeriados[i].ToString("D2")}\t");
+                }
+            }
+        }
+
+
+
+
+
+        public static int[] RetornaFeriados(int mes, int ano)
+        {
+            int[] feriados = new int[15];
+
+            int indice = 0;
+            //feriados[indice++] = 11;
+            //feriados[indice++] = 21;
+
+            if (mes == 1) feriados[indice++] = 1;
+            
+            else if (mes == 4)
+            {
+                feriados[indice++] = 4; //Aniversário de Marília
+                feriados[indice++] = 21;  // Tiradentes
+            }
+            else if (mes == 5) feriados[indice++] = 1; // Dia do Trabalhador
+
+            else if (mes == 7) feriados[indice++] = 9; // Revolução Constitucionalista (estadual)
+
+            else if (mes == 9) feriados[indice++] = 7; // Independência
+
+            else if (mes == 10) feriados[indice++] = 12;// Nossa Senhora Aparecida
+
+            else if (mes == 11)
+            {
+                feriados[indice++] = 2; // Finados
+                feriados[indice++] = 15; //Proclamação da República
+                feriados[indice++] = 20; // Dia da Consciência Negra
+            }
+            else if (mes == 12)
+            {
+                feriados[indice++] = 8; // Dia da Padroeira de Marília
+                feriados[indice++] = 25; // Natal
+            }
+
+            return feriados;
+
+
+ 
 
         }
     }

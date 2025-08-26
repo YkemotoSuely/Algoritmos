@@ -1,0 +1,17 @@
+aula 22/08
+
+Atalhos do Visual Studio
+
+ctrl + k + c para comentar código
+ctrl + k + 1 para descomentar
+
+ctrl + d duplica a linha
+
+ctrl + RR para renomear váriáveis, métodos ou classes
+
+
+modificador STATIC
+
+Criação de um métdo estático, não sendo necessário instanciar a classe para usá-lo
+
+Criação de Matriz (um vetor dentro de outro)percorre linhas e colunas
