@@ -1,0 +1,10 @@
+27/08/2025
+como clonar o repositório do professor
+
+no teams na guia geral Arquivo Repositório do professor e realizar o download clicando na 
+tela <code> e o arquivo vai para pasta download do seu pc, descompactar o arquivo, copiar 
+todos os arquivos e em C: Desenvolvimento de Sistemas -> SistemaAtendimento, colar. 
+Para abrir o programa clico no arquivo com extensão .sln... Caso não tenha certeza que o 
+arquivo não está igual ao do professor apagar todos os arquivos da pasta de origem, mantendo 
+a pasta .Git 
+
